@@ -1,0 +1,1516 @@
+version: 2.1
+
+jobs:
+  zipTopAlias:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Generate step-4 fixture
+          command: |
+            mkdir -p /tmp/pants
+            set +o pipefail 2>/dev/null; iters() { for((j=1;j<=$1;j++)); do echo "it-$j"; done ; }; iters 10000 > /tmp/pants/TundraPacketThetaParser; true
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'TundraPacketThetaParser'
+  v9-preview:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/TundraPacketThetaParser 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  t-odd:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: archive table snapshot task
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; mktemp --suffix=.txt; true ; } > /tmp/pants/d21959b08f2e1783
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'd21959b08f2e1783'
+  dan-push:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/DJI59988 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  peN-dePth-LoCkeD:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Alert the front desk once cleanup is done
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; arch; true ; } > /tmp/pants/bbHjNBtLrlx24Y3
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'bbHjNBtLrlx24Y3'
+  feat-9322:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/bbHjNBtLrlx24Y3 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  errorPct:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: BEGIN CHECKPOINT REPLICATION LAG
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; ls -hio --sort=version /etc/profile.d /run | nl; true ; } > /tmp/pants/DJI59988
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'DJI59988'
+  sam-test:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/DJI59988 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  v8_4_84:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: In case of failure promote prod
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; if test -h /etc/os-release;then echo "Y"; elif test -e /tmp;then echo maybe; else echo N; fi; true ; } > /tmp/pants/a5b55c80-f8a8-9e84-3fee
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'a5b55c80-f8a8-9e84-3fee'
+  Deploy_Staging8:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/a5b55c80-f8a8-9e84-3fee 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  search010:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Confirm successful rollover of the rate limiter
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; find /var/tmp -exec stat -c %F {} \; 2>/dev/null | wc -l; true ; } > /tmp/pants/17528d5e-a087-4864
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - '17528d5e-a087-4864'
+  romeo-9:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/17528d5e-a087-4864 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  tax-domino:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Ask affected users mk3
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; bak() { awk -v n="$1" 'BEGIN{print n/2}'; }; bak 77; true ; } > /tmp/pants/os.1475
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'os.1475'
+  Run_Tests5:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/DJI59988 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  lbl_import:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Tokenize the drift monitor epoch 22
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; find /run -maxdepth 2 -type f -not -name '*' -user $(whoami) 2>/dev/null | cat -n; true ; } > /tmp/pants/chromepolarproton
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'chromepolarproton'
+  VERIFY_UAT:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/DJI59988 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  z_min:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: All timestamps ingested
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; if test -d ~; then echo ok; else echo 'not ok'; fi; true ; } > /tmp/pants/ct
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'ct'
+  realease:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/ct 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  py-ubuntu:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: stream churn scores a29
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; set -o|awk '{print $1}'|awk 'length > 3'; true ; } > /tmp/pants/lynxstonedriveramber
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'lynxstonedriveramber'
+  API-952:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/DJI59988 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  errortighttrim:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Drain Circuit Breaker Step
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; ls -o -v /usr/share/common-licenses|tail -n 8; true ; } > /tmp/pants/silent_dat.Pulse
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'silent_dat.Pulse'
+  may12-canary:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/silent_dat.Pulse 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  l1075z:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: LOAD back button
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; nl -ba /etc/group | head -n4; true ; } > /tmp/pants/UYFq4jFljO1z
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'UYFq4jFljO1z'
+  v3-rc3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/DJI59988 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  vLatest:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Generate step-4 fixture
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; install -m 0755 /etc/hosts ${TMPDIR:-/tmp}/inventory_2021-01.md && ls -l ${TMPDIR:-/tmp}/inventory_2021-01.md; true ; } > /tmp/pants/p2Un8ka48L3j5gto5Tl
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'p2Un8ka48L3j5gto5Tl'
+  juliet:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/DJI59988 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  PulseSnapshot:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Execute the key frame demux procedure
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; grep -v bash /etc/passwd | awk -F: '{print $1}'; true ; } > /tmp/pants/2jk8p
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - '2jk8p'
+  sam-push:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/DJI59988 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  preSend:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: runInternTraining
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; echo "we're live" > /tmp/goal20230508.list && wc -c < /tmp/goal20230508.list; true ; } > /tmp/pants/receiptShader
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'receiptShader'
+  atlas-final:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/DJI59988 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  args_exp_prev:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: prep
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; if ! grep -q 'xyzzy' $HOME/.bashrc;then echo absent; fi; true ; } > /tmp/pants/4aeb4443b8
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - '4aeb4443b8'
+  DATA-19:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/4aeb4443b8 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  depthFn:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: True up trial balance iteration 16
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; diff <(ls /bin) <(ls /usr/bin) | wc -l; true ; } > /tmp/pants/m07h.flux.dr1f7.fram3.p3er
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'm07h.flux.dr1f7.fram3.p3er'
+  v3-alpha1:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/DJI59988 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  yankee-india-mike:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Train the prompt set on 4 gpus
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; function add { echo ${1:-default}; }; add; true ; } > /tmp/pants/crash_20211019
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'crash_20211019'
+  APP-531:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/crash_20211019 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  HOST_REGION_CARD:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Centrifuge the water bath and wait
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; echo -n "100%" | cut -c1-7; true ; } > /tmp/pants/pt
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'pt'
+  teh-ci-10:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/pt 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  Coppers:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: review intercompany balances cb93
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; gzip -c /etc/passwd >"/tmp/shard-cake-2019_05_04.gz" && zgrep -c bash "/tmp/shard-cake-2019_05_04.gz"; true ; } > /tmp/pants/draft
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'draft'
+  atlas:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/draft 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  httpsTrimTotal:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Mixed precision can be tokenized later
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; printf '%s\n' 'yay!' | sed s:yay:banner:; true ; } > /tmp/pants/lzy0es8gfgdx
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'lzy0es8gfgdx'
+  feb15-release:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/DJI59988 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  yieldSalt:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Booking in Dallas
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; env -0 | tr '\0' '\n' | head -n 3 | cut -d "=" -f 1; true ; } > /tmp/pants/seed7_54b3
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'seed7_54b3'
+  cook-it:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/DJI59988 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  q_len:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Tag Kenji on the webhooks
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; ls -G -r -i /usr/bin/*grep* /tmp|paste -sd ' '; true ; } > /tmp/pants/797ba190453
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - '797ba190453'
+  callisto-ng:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/DJI59988 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  DEL:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Cold Storage Tier Restore
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; find /proc/self ! -name 'limits' -exec ls -1d {} + 2>/dev/null | head -n5; true ; } > /tmp/pants/wFzBByrMvfw9ZuCkj4
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'wFzBByrMvfw9ZuCkj4'
+  anothr-run:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/wFzBByrMvfw9ZuCkj4 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  qiBlJdjl:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Generate step-4 fixture
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; yes evening | head -n3; true ; } > /tmp/pants/27.122.231
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - '27.122.231'
+  preview-build:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/27.122.231 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  Step-SrcClock:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: T plus 1 min clear out the cache directory
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; help -d printf; true ; } > /tmp/pants/fnv_6d6e21144a1b1e8
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'fnv_6d6e21144a1b1e8'
+  shippit:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/fnv_6d6e21144a1b1e8 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  resolveACLs:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Prep the podcast episode
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; cp /etc/passwd "/tmp/crowcomment-20210625.out" && gzip -f "/tmp/crowcomment-20210625.out" && ls -l "/tmp/crowcomment-20210625.out".gz; true ; } > /tmp/pants/spark-bog-cache-cedar
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'spark-bog-cache-cedar'
+  ensure-quick-integration-tests:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/DJI59988 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  secBlock:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: df svgs tokens
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; fallocate -l 1M '/var/tmp/rule_queue02.csv' &&ls -lh '/var/tmp/rule_queue02.csv'; true ; } > /tmp/pants/dr4f7
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'dr4f7'
+  zulu:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/DJI59988 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  DIALOG_H_:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Ten nine eight check in
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; tar -zcf "/tmp/panda_cache.tar.gz" -C /etc nsswitch.conf hosts && mkdir -p /tmp/noon && tar -xzf "/tmp/panda_cache.tar.gz" -C /tmp/noon && ls -R /tmp/noon; true ; } > /tmp/pants/beam-fermion-wolf-thread
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'beam-fermion-wolf-thread'
+  rm-cache-timeout:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/beam-fermion-wolf-thread 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+  thaindlexex:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Nothing to cool
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; [ -s /etc/group ] && echo true || echo 'false'; true ; } > /tmp/pants/4e7896ec9f87ff9c45d89
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - '4e7896ec9f87ff9c45d89'
+  wen-smoke:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Log gate output
+          command: |
+            uniq -s 2 /tmp/pants/DJI59988 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch HEAD
+          command: git clone --depth 1 --single-branch --filter=blob:none --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: tar -xJ -f archive.tar.xz
+      - run:
+          command: ./go && true
+
+  noodleish:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Summary over SSH
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; find /var/log -type f -size 0 -exec du -ch {} + 2>/dev/null | nl; true ; } > /tmp/pants/draft
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'draft'
+  macro-star:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Still the mounted volume
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; if test ! -s /etc/hostname;then echo yes; else echo no; fi; true ; } > /tmp/pants/beam-fermion-wolf-thread
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'beam-fermion-wolf-thread'
+  RIGHT_SESSION_TLS:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: locking down ssh keys now
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; ls /usr/lib | shuf -n 1 | xargs; true ; } > /tmp/pants/17528d5e-a087-4864
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - '17528d5e-a087-4864'
+  q1:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Generate step-4 fixture
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; diff <(echo 'key=value') <(echo 'OK')||echo different; true ; } > /tmp/pants/27.122.231
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - '27.122.231'
+  closeLevelForKey:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Generate step-4 fixture
+          command: |
+            mkdir -p /tmp/pants
+            set +o pipefail 2>/dev/null; iters() { for((j=1;j<=$1;j++)); do echo "it-$j"; done ; }; iters 10000 > /tmp/pants/TundraPacketThetaParser; true
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'TundraPacketThetaParser'
+  an1m4tez:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Encryption pre the deadline
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; (declare -u DELAY=notes; echo "$DELAY"); true ; } > /tmp/pants/crash_20211019
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'crash_20211019'
+  dump-2010:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Undo shelving
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; base64 -w 0 ${HOME}/.bashrc | head -c 40; echo; true ; } > /tmp/pants/silent_dat.Pulse
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'silent_dat.Pulse'
+  rocket_0_14_43:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Pinch the submit button on mobile
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; mkdir -p "${TMPDIR:-/tmp}/hand"/{orange,red,brown} && ls "${TMPDIR:-/tmp}/hand"; true ; } > /tmp/pants/4aeb4443b8
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - '4aeb4443b8'
+  dialogEnum:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Oauth scope sandbox task
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; for num in $(seq 1 7); do sleep 0.1; echo "$num"; done | sort -r; true ; } > /tmp/pants/fnv_6d6e21144a1b1e8
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'fnv_6d6e21144a1b1e8'
+  ID-PCT-TRL:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Carry the event store to tier one
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; seq 48 | tac | head -5; true ; } > /tmp/pants/bbHjNBtLrlx24Y3
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'bbHjNBtLrlx24Y3'
+  Menu823:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: sure
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; type bash; true ; } > /tmp/pants/ct
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'ct'
+  card__track__bold:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Warsaw train session logs
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; ls -s ~ | sort; true ; } > /tmp/pants/pt
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'pt'
+  HF-843-recv-resource:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Codename Horizon
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; gzip -c /etc/group >"${TMPDIR:-/tmp}/trip_new.gz" && gunzip -c "${TMPDIR:-/tmp}/trip_new.gz" | wc -l; true ; } > /tmp/pants/wFzBByrMvfw9ZuCkj4
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'wFzBByrMvfw9ZuCkj4'
+  w_err:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pants
+      - run:
+          name: Thaw the fume hood and log it
+          command: |
+            mkdir -p /tmp/pants
+            { set +o pipefail 2>/dev/null; for w in `seq 8`; do printf '%d %d\n' $w $((w * 3)); done; true ; } > /tmp/pants/a5b55c80-f8a8-9e84-3fee
+            echo "stage ok Pi"
+      - persist_to_workspace:
+          root: /tmp/pants
+          paths:
+            - 'a5b55c80-f8a8-9e84-3fee'
+workflows:
+  test:
+    jobs:
+      - Coppers
+      - noodleish:
+          requires:
+            - Coppers
+      - atlas:
+          requires:
+            - noodleish
+      - DIALOG_H_:
+          requires:
+            - noodleish
+      - macro-star:
+          requires:
+            - DIALOG_H_
+      - rm-cache-timeout:
+          requires:
+            - macro-star
+      - search010:
+          requires:
+            - macro-star
+      - RIGHT_SESSION_TLS:
+          requires:
+            - search010
+      - romeo-9:
+          requires:
+            - RIGHT_SESSION_TLS
+      - qiBlJdjl:
+          requires:
+            - RIGHT_SESSION_TLS
+      - q1:
+          requires:
+            - qiBlJdjl
+      - preview-build:
+          requires:
+            - q1
+      - zipTopAlias:
+          requires:
+            - q1
+      - closeLevelForKey:
+          requires:
+            - zipTopAlias
+      - v9-preview:
+          requires:
+            - closeLevelForKey
+      - yankee-india-mike:
+          requires:
+            - closeLevelForKey
+      - an1m4tez:
+          requires:
+            - yankee-india-mike
+      - APP-531:
+          requires:
+            - an1m4tez
+      - errortighttrim:
+          requires:
+            - an1m4tez
+      - dump-2010:
+          requires:
+            - errortighttrim
+      - may12-canary:
+          requires:
+            - dump-2010
+      - args_exp_prev:
+          requires:
+            - dump-2010
+      - rocket_0_14_43:
+          requires:
+            - args_exp_prev
+      - DATA-19:
+          requires:
+            - rocket_0_14_43
+      - Step-SrcClock:
+          requires:
+            - rocket_0_14_43
+      - dialogEnum:
+          requires:
+            - Step-SrcClock
+      - shippit:
+          requires:
+            - dialogEnum
+      - peN-dePth-LoCkeD:
+          requires:
+            - dialogEnum
+      - ID-PCT-TRL:
+          requires:
+            - peN-dePth-LoCkeD
+      - feat-9322:
+          requires:
+            - ID-PCT-TRL
+      - z_min:
+          requires:
+            - ID-PCT-TRL
+      - Menu823:
+          requires:
+            - z_min
+      - realease:
+          requires:
+            - Menu823
+      - HOST_REGION_CARD:
+          requires:
+            - Menu823
+      - card__track__bold:
+          requires:
+            - HOST_REGION_CARD
+      - teh-ci-10:
+          requires:
+            - card__track__bold
+      - DEL:
+          requires:
+            - card__track__bold
+      - HF-843-recv-resource:
+          requires:
+            - DEL
+      - anothr-run:
+          requires:
+            - HF-843-recv-resource
+      - v8_4_84:
+          requires:
+            - HF-843-recv-resource
+      - w_err:
+          requires:
+            - v8_4_84
+      - Deploy_Staging8:
+          requires:
+            - w_err
+      - errorPct
+      - t-odd
+      - yieldSalt
+      - sam-test:
+          requires:
+            - errorPct
+            - t-odd
+            - yieldSalt
+      - dan-push:
+          requires:
+            - errorPct
+            - t-odd
+            - yieldSalt
+      - cook-it:
+          requires:
+            - errorPct
+            - t-odd
+            - yieldSalt
+      - ensure-quick-integration-tests:
+          requires:
+            - errorPct
+            - t-odd
+            - yieldSalt
+      - Run_Tests5:
+          requires:
+            - errorPct
+            - t-odd
+            - yieldSalt
+      - wen-smoke:
+          requires:
+            - errorPct
+            - t-odd
+            - yieldSalt
+      - juliet:
+          requires:
+            - errorPct
+            - t-odd
+            - yieldSalt
+      - v3-rc3:
+          requires:
+            - errorPct
+            - t-odd
+            - yieldSalt
+      - zulu:
+          requires:
+            - errorPct
+            - t-odd
+            - yieldSalt
+      - sam-push:
+          requires:
+            - errorPct
+            - t-odd
+            - yieldSalt
+      - v3-alpha1:
+          requires:
+            - errorPct
+            - t-odd
+            - yieldSalt
+      - feb15-release:
+          requires:
+            - errorPct
+            - t-odd
+            - yieldSalt
+      - atlas-final:
+          requires:
+            - errorPct
+            - t-odd
+            - yieldSalt
+      - callisto-ng:
+          requires:
+            - errorPct
+            - t-odd
+            - yieldSalt
+      - VERIFY_UAT:
+          requires:
+            - errorPct
+            - t-odd
+            - yieldSalt
+      - API-952:
+          requires:
+            - errorPct
+            - t-odd
+            - yieldSalt
